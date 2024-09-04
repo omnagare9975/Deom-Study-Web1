@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "main": "node1.js",
   "scripts": {
-    "test": "echo \"The Test Is Running\" && exit 0"
-  },
+  "build": "echo 'Build step: You would typically compile your code here.'",
+  "deploy": "gh-pages -d public"
+    },
+
+
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
