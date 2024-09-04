@@ -1,7 +1,10 @@
-name: Deploy to GitHub Pages
+name: Node.js CI
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
@@ -18,14 +21,16 @@ jobs:
       with:
         node-version: '14'
 
+    - name: Cache node modules
+      uses: actions/cache@v3
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
     - name: Install dependencies
       run: npm install
 
-    - name: Build the application
-      run: npm run build
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: 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
-        publish_dir: ./public
+    - name: Run tests
+      run: npm test
