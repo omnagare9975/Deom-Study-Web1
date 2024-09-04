@@ -1,5 +1,2 @@
-const rest = require('fs')
+console.log("Hello, GitHub Actions!");
 
-rest.writeFileSync("./index.js" , "This is om nagare");
-
-console.log("Hello Worlds");
